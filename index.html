@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>주식회사 단비 - 정밀 금형 부품 전문기업</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a162f 0%, #112b4c 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 30px 0;
+            margin-bottom: 40px;
+            background: none;
+            box-shadow: none;
+            position: relative;
+            z-index: 10;
+        }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -1px;
+            padding-left: 10px;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav ul {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav ul li a {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 6px 0;
+        }
+        .nav ul li a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 900px) {
+            .nav ul { gap: 18px; }
+        }
+        @media (max-width: 600px) {
+            .logo-text { font-size: 1.1rem; }
+            .nav ul li a { font-size: 0.95rem; }
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/main-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            animation: slideInScale 0.8s ease-out both;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            border-radius: 24px;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.3),
+                0 0 100px rgba(255,107,107,0.2);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-card:hover .product-title {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: translateY(-5px);
+        }
+
+        .product-description {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,107,107,0.4);
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .product-card {
+                padding: 30px;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+        }
+    </style>
+<style>
+@keyframes softPulseBackground {
+    0% { background-color: #0a162f; }
+    50% { background-color: #0f1e36; }
+    100% { background-color: #0a162f; }
+}
+.hero-section {
+    animation: softPulseBackground 8s ease-in-out infinite !important;
+}
+</style>
+<style>
+@keyframes fadeZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.hero-section {
+    animation: fadeZoomIn 1.5s ease-out forwards !important;
+}
+</style>
+<style>
+.droplet-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+.droplet {
+    position: absolute;
+    bottom: -20px;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: dropletFall linear infinite;
+}
+@keyframes dropletFall {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.8);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+<nav class="bg-white bg-opacity-10 backdrop-blur-md shadow-lg fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a class="text-white hover:text-yellow-300 text-2xl font-bold transition" href="index.html">주식회사 단비</a>
+<div class="space-x-6 hidden md:block">
+<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="about.html">회사소개</a>
+<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="category.html">제품</a>
+<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="applications.html">적용사례</a>
+<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="resources.html">자료실</a>
+<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="contact.html">문의하기</a>
+</div>
+</div>
+</nav>
+<div class="floating-particles"></div>
+<!-- 네비게이션 바 시작 -->
+<!-- 네비게이션 바 끝 -->
+<!-- 히어로 섹션 -->
+<section class="hero-section" style="margin-top: 100px; padding: 60px 20px; border: 2px solid silver; border-radius: 18px;background-color: #0a162f; animation: fadeZoomIn 1.5s ease-out forwards;">
+<h1 class="hero-title">기술에 단비가 내리다</h1>
+<p class="hero-subtitle">메마른 산업 현장에 꼭 필요한 단비처럼,
+주식회사 단비는 정밀함과 신뢰로 응답합니다.</p>
+<div class="mt-6 flex justify-center gap-4">
+<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
+    제품 보기
+  </a>
+<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
+    문의하기
+  </a>
+</div>
+</section>
+<!-- 회사 소개 섹션 -->
+<section class="text-center py-20 px-6 bg-gradient-to-b from-[#112b4c] to-[#0a162f] text-white">
+<div class="max-w-6xl mx-auto">
+<div class="mb-12">
+<span class="inline-block text-sm px-4 py-2 border border-blue-500 rounded-full text-blue-400 mb-4">Precision for the World</span>
+<!-- 전문 솔루션 섹션 -->
+<h2 class="text-4xl font-bold mb-4">전문 솔루션</h2>
+<p class="text-lg text-gray-300">다양한 산업 분야에 적용 가능한 고품질 금형 부품과 맞춤형 솔루션을 제공합니다</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="정밀 금형 부품" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">정밀 금형 부품</h3>
+<p class="text-gray-300 mb-4">최첨단 CNC 가공 기술로 제작된 고정밀 금형 부품</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>0.001mm 정밀도</li>
+<li>고강도 소재 사용</li>
+<li>맞춤형 설계</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="자동화 시스템" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">자동화 시스템</h3>
+<p class="text-gray-300 mb-4">생산 효율성을 극대화하는 스마트 자동화 시스템</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>AI 기반 품질 관리</li>
+<li>실시간 모니터링</li>
+<li>원격 제어 가능</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="맞춤형 부품" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">맞춤형 부품</h3>
+<p class="text-gray-300 mb-4">고객의 특별한 요구사항에 맞춘 완전 맞춤형 부품 제작</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>3D 설계 지원</li>
+<li>빠른 프로토타입</li>
+<li>대량 생산 가능</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="정밀 금형 부품" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">정밀 금형 부품</h3>
+<p class="text-gray-300 mb-4">최첨단 CNC 가공 기술로 제작된 고정밀 금형 부품</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>0.001mm 정밀도</li>
+<li>고강도 소재 사용</li>
+<li>맞춤형 설계</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="자동화 시스템" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">자동화 시스템</h3>
+<p class="text-gray-300 mb-4">생산 효율성을 극대화하는 스마트 자동화 시스템</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>AI 기반 품질 관리</li>
+<li>실시간 모니터링</li>
+<li>원격 제어 가능</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
+<img alt="맞춤형 부품" class="w-full h-56 object-cover" src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=500&amp;h=300&amp;fit=crop"/>
+<div class="p-6 text-left">
+<h3 class="text-xl font-semibold mb-2 text-white">맞춤형 부품</h3>
+<p class="text-gray-300 mb-4">고객의 특별한 요구사항에 맞춘 완전 맞춤형 부품 제작</p>
+<ul class="text-sm text-blue-300 list-disc pl-5 mb-4">
+<li>3D 설계 지원</li>
+<li>빠른 프로토타입</li>
+<li>대량 생산 가능</li>
+</ul>
+<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
+</div>
+</div></div>
+</div>
+</section>
+<!-- 주요 제품 섹션 -->
+<div class="products-container">
+<div class="product-card">
+<div class="product-image">
+<img alt="정밀 금형 부품" src="images/product1.jpg"/>
+</div>
+<h3 class="product-title">정밀 금형 부품</h3>
+<p class="product-description">최첨단 기술로 제작된 고품질 금형 부품</p>
+<div class="mt-6 flex justify-center gap-4">
+<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
+    제품 보기
+  </a>
+<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
+    문의하기
+  </a>
+</div>
+</div>
+<div class="product-card">
+<div class="product-image">
+<img alt="자동화 시스템" src="images/product2.jpg"/>
+</div>
+<h3 class="product-title">자동화 시스템</h3>
+<p class="product-description">효율적인 생산을 위한 자동화 솔루션</p>
+<div class="mt-6 flex justify-center gap-4">
+<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
+    제품 보기
+  </a>
+<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
+    문의하기
+  </a>
+</div>
+</div>
+<div class="product-card">
+<div class="product-image">
+<img alt="맞춤형 부품" src="images/product3.jpg"/>
+</div>
+<h3 class="product-title">맞춤형 부품</h3>
+<p class="product-description">고객의 요구에 맞는 맞춤형 부품 제작</p>
+<div class="mt-6 flex justify-center gap-4">
+<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
+    제품 보기
+  </a>
+<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
+    문의하기
+  </a>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.createElement('div');
+    container.className = 'droplet-container';
+    document.body.appendChild(container);
+    for (let i = 0; i < 100; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'droplet';
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDuration = (Math.random() * 3 + 3.5) + 's';
+        drop.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(drop);
+    }
+});
+</script>
+<!-- 푸터 -->
+<footer class="bg-[#1f2a37] text-white py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-2">주식회사 단비</h3>
+<p class="text-sm text-gray-400">정밀 금형 부품 전문기업</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-2">바로가기</h3>
+<ul class="text-sm text-gray-400 space-y-1">
+<li><a class="hover:text-white" href="about.html">회사소개</a></li>
+<li><a class="hover:text-white" href="category.html">제품소개</a></li>
+<li><a class="hover:text-white" href="applications.html">적용사례</a></li>
+<li><a class="hover:text-white" href="contact.html">문의하기</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-2">연락처</h3>
+<ul class="text-sm text-gray-400 space-y-1">
+<li>전화: 031-504-4492</li>
+<li>팩스: 050-4017-4498</li>
+<li>이메일: ahs_danbi@naver.com</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-2">오시는 길</h3>
+<p class="text-sm text-gray-400">
+        경기도 안산시 상록구 해양3로 15,<br/>
+        그랑시티 시그니처타워 1609호
+      </p>
+</div>
+</div>
+<div class="border-t border-gray-600 mt-8 pt-4 text-center text-gray-500 text-sm">
+    © 2025 주식회사 단비. All rights reserved.
+  </div>
+</footer>
+</body>
+</html> 

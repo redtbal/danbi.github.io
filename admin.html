@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 주식회사 단비</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .drop-zone {
+            border: 2px dashed #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        .drop-zone.dragover {
+            border-color: #2563eb;
+            background-color: #ebf5ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 네비게이션 바 -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700">주식회사 단비</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="about.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">회사소개</a>
+                        <a href="category.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">제품</a>
+                        <a href="applications.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">적용사례</a>
+                        <a href="resources.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">자료실</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">문의하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 관리자 섹션 -->
+    <div class="pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-8">관리자 페이지</h1>
+            
+            <!-- 이미지 업로드 섹션 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-xl font-bold mb-4">이미지 업로드</h2>
+                <form id="uploadForm" class="space-y-4">
+                    <div class="drop-zone rounded-lg p-8 text-center cursor-pointer" id="dropZone">
+                        <input type="file" id="fileInput" class="hidden" accept="image/*" multiple>
+                        <div class="text-gray-500">
+                            <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                            </svg>
+                            <p>이미지를 드래그하거나 클릭하여 업로드하세요</p>
+                            <p class="text-sm mt-2">지원 형식: JPG, PNG, GIF (최대 10MB)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">제품</label>
+                            <select name="category" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option value="site">현장 사진</option>
+                                <option value="parts">부품 납품</option>
+                                <option value="process">제조 공정</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">제목</label>
+                            <input type="text" name="title" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">설명</label>
+                        <textarea name="description" rows="3" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+                            업로드
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 업로드된 이미지 목록 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">업로드된 이미지</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="imageList">
+                    <!-- 이미지 목록이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">주식회사 단비</h3>
+                    <p class="text-gray-400">최고의 품질과 서비스로 고객님의 성공을 함께합니다.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">연락처</h3>
+                    <p class="text-gray-400">전화: 02-1234-5678</p>
+                    <p class="text-gray-400">이메일: info@danbi.com</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">주소</h3>
+                    <p class="text-gray-400">서울특별시 강남구 테헤란로 123</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 주식회사 단비. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 이미지 압축 함수
+        function compressImage(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // 이미지 크기 조정 (최대 800px)
+                        let width = img.width;
+                        let height = img.height;
+                        const maxSize = 800;
+                        
+                        if (width > height && width > maxSize) {
+                            height = Math.round((height * maxSize) / width);
+                            width = maxSize;
+                        } else if (height > maxSize) {
+                            width = Math.round((width * maxSize) / height);
+                            height = maxSize;
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        
+                        // 이미지 그리기
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // 압축된 이미지 데이터 반환
+                        resolve(canvas.toDataURL('image/jpeg', 0.7));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 드래그 앤 드롭 기능
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+        const imageList = document.getElementById('imageList');
+
+        // 이미지 데이터를 로컬 스토리지에서 불러오기
+        function loadImages() {
+            const images = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+            displayImages(images);
+        }
+
+        // 이미지 목록 표시
+        function displayImages(images) {
+            imageList.innerHTML = '';
+            images.forEach((image, index) => {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'relative group';
+                imageItem.innerHTML = `
+                    <img src="${image.url}" alt="${image.title}" class="w-full h-48 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition duration-300" onclick="deleteImage(${index})">
+                            삭제
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <p class="font-medium">${image.title}</p>
+                        <p class="text-sm text-gray-500">${image.category}</p>
+                    </div>
+                `;
+                imageList.appendChild(imageItem);
+            });
+        }
+
+        // 드래그 앤 드롭 이벤트 처리
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('dragover');
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+        dropZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFiles);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles({ target: { files: files } });
+        }
+
+        async function handleFiles(e) {
+            const files = [...e.target.files];
+            for (const file of files) {
+                await uploadFile(file);
+            }
+        }
+
+        async function uploadFile(file) {
+            try {
+                // 이미지 압축
+                const compressedImage = await compressImage(file);
+                
+                const formData = new FormData(uploadForm);
+                const imageData = {
+                    url: compressedImage,
+                    title: formData.get('title') || file.name,
+                    category: formData.get('category') || 'site',
+                    description: formData.get('description') || '',
+                    date: new Date().toISOString()
+                };
+                
+                // 로컬 스토리지에 이미지 저장
+                const images = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+                images.push(imageData);
+                localStorage.setItem('galleryImages', JSON.stringify(images));
+                
+                // 이미지 목록 새로고침
+                loadImages();
+            } catch (error) {
+                console.error('이미지 업로드 중 오류 발생:', error);
+                alert('이미지 업로드 중 오류가 발생했습니다.');
+            }
+        }
+
+        function deleteImage(index) {
+            const images = JSON.parse(localStorage.getItem('galleryImages') || '[]');
+            images.splice(index, 1);
+            localStorage.setItem('galleryImages', JSON.stringify(images));
+            loadImages();
+        }
+
+        // 폼 제출 처리
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // 파일이 선택되지 않은 경우 처리
+            if (fileInput.files.length === 0) {
+                alert('이미지를 선택해주세요.');
+                return;
+            }
+            
+            // 파일 업로드 처리
+            handleFiles({ target: { files: fileInput.files } });
+            
+            // 폼 초기화
+            this.reset();
+            fileInput.value = '';
+        });
+
+        // 페이지 로드 시 이미지 목록 표시
+        loadImages();
+    </script>
+</body>
+</html> 

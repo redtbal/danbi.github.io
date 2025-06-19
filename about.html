@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  /* 네비게이션 바 스타일: 위치, 너비, Z-인덱스, 배경, 블러 필터, 그림자, 하단 테두리를 정의합니다. */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            /* 기존의 밝은 투명 배경을 어두운 계열로 변경하여 전체 페이지 테마와 일관성을 높였습니다. */
+            background: rgba(15, 15, 35, 0.9); /* 바디 배경의 시작 색상과 유사하게 설정 */
+            backdrop-filter: blur(8px); /* 이전보다 살짝 덜 흐리게 하여 가시성 유지 */
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2); /* 더 강한 그림자로 헤더의 존재감 강조 */
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* 미묘한 하단 테두리로 구분감 주기 */
+        }
+        /* 네비게이션 컨테이너와 로고 스타일은 기존과 동일하게 유지합니다. */
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 56px;
+        }
+        .nav-logo {d
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2563eb; /* 로고 색상은 기존대로 유지 */
+            letter-spacing: -1px;
+        }
+        /* 네비게이션 메뉴 스타일은 기존과 동일하게 유지합니다. */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-menu li a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.2s;
+            padding: 8px 12px;
+        }
+        .nav-menu li a .en {
+            display: none;
+        }
+        .nav-menu li a:hover .ko {
+            display: none;
+        }
+        .nav-menu li a:hover .en {
+            display: inline;
+            color: #ffd700;
+        }
+        .nav-menu li a:hover {
+            color: #ffd700;
+        }
+        /* 반응형 미디어 쿼리는 기존과 동일하게 유지합니다. */
+        @media (max-width: 900px) {
+            .nav-container { padding: 0 12px; }
+            .nav-menu { gap: 18px; }
+        }
+        @media (max-width: 600px) {
+            .nav-logo { font-size: 1.1rem; }
+            .nav-menu li a { font-size: 0.95rem; }
+        }
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>회사소개 - 주식회사 단비</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 30px 0;
+            margin-bottom: 40px;
+            background: none;
+            box-shadow: none;
+            position: relative;
+            z-index: 10;
+        }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -1px;
+            padding-left: 10px;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav ul {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav ul li a {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 6px 0;
+        }
+        .nav ul li a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 900px) {
+            .nav ul { gap: 18px; }
+        }
+        @media (max-width: 600px) {
+            .logo-text { font-size: 1.1rem; }
+            .nav ul li a { font-size: 0.95rem; }
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/about-banner.jpg');
+            
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+        }
+        /* Reverted custom styles for the new theme */
+
+        .nav-item {
+            position: relative;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-item:hover .submenu {
+            display: block;
+        }
+        .submenu a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .submenu a:hover {
+            background: #f5f5f5;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Nested submenu styles */
+        .nav-item.has-nested-submenu .nested-submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1010;
+        }
+        .nav-item.has-nested-submenu:hover > .nested-submenu {
+            display: block;
+        }
+        .nav-item.has-nested-submenu .nested-submenu a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-item.has-nested-submenu .nested-submenu a:hover {
+            background: #f5f5f5;
+        }
+
+        /* Location styles */
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .location-info {
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .location-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .location-info h2 {
+            color: #1E3A8A;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .info-content {
+            color: #1F2937;
+            font-weight: 400;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            background-color: #f5f5f5;
+            margin: 2rem 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #map:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        #map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        .transportation {
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .transportation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .transportation h3 {
+            color: #1E3A8A;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .transportation ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .transportation li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .transportation li::before {
+            content: "•";
+            color: #3B82F6;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+<style>
+    .floating-particles { position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: none;}
+    .particle { position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 50%; animation: float 6s infinite linear;}
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0;}
+        10% { opacity: 1;}
+        90% { opacity: 1;}
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0;}
+    }
+</style>
+
+<style>
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body class="bg-gray-50"><div class="floating-particles"></div>
+<div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex-shrink-0">
+<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html">회사소개</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html">제품</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html">적용사례</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html">자료실</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html">문의하기</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- 히어로 섹션 -->
+<section class="hero-section flex items-center justify-center text-white">
+<div class="text-center">
+<h1 class="text-5xl font-bold mb-4">회사소개</h1>
+<p class="text-xl">정밀 금형 부품의 선두주자, 주식회사 단비</p>
+</div>
+</section>
+<!-- 회사 개요 섹션 -->
+<section class="py-20 bg-white animate-fade-in" style="animation-delay: 0.1s;">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-2xl font-bold mb-6">회사 개요</h2>
+<div class="space-y-4 text-gray-700">
+<p><strong class="font-semibold">주소:</strong> 경기도 안산시 상록구 해양3로 15, 그랑시티 시그니처타워 1609호</p>
+<p><strong class="font-semibold">전화:</strong> 031-504-4492</p>
+<p><strong class="font-semibold">팩스:</strong> 050-4017-4498</p>
+<p><strong class="font-semibold">이메일1:</strong> ahs_danbi@naver.com</p>
+<p><strong class="font-semibold">이메일2:</strong> ahs4498@gmail.com</p>
+</div>
+</div>
+<div class="flex justify-center items-center">
+<img alt="회사 전경" class="w-full max-w-md h-auto rounded-lg shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-105" src="images/company-exterior.jpg"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 비전 섹션 -->
+<section class="py-20 bg-gray-50 animate-fade-in" style="animation-delay: 0.3s;">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">비전과 미션</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white p-8 rounded-lg shadow-lg transform transition duration-300 hover:shadow-xl hover:translate-y-[-5px]">
+<h3 class="text-2xl font-semibold mb-4">비전</h3>
+<p class="text-gray-600">정밀 금형 부품 분야의 글로벌 리더로서, 혁신적인 기술과 최고의 품질로 고객의 성공을 함께합니다.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg transform transition duration-300 hover:shadow-xl hover:translate-y-[-5px]">
+<h3 class="text-2xl font-semibold mb-4">미션</h3>
+<p class="text-gray-600">고객의 요구사항을 정확히 이해하고, 최적의 솔루션을 제공하여 제조업의 미래를 선도합니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 핵심 가치 섹션 -->
+<section class="py-20 bg-white animate-fade-in" style="animation-delay: 0.5s;">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">핵심 가치</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center">
+<div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition duration-300 hover:scale-110 hover:shadow-lg">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2">품질 우선</h3>
+<p class="text-gray-600">최고의 품질을 위해 끊임없이 노력합니다.</p>
+</div>
+<div class="text-center">
+<div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition duration-300 hover:scale-110 hover:shadow-lg">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2">혁신 추구</h3>
+<p class="text-gray-600">끊임없는 혁신으로 미래를 준비합니다.</p>
+</div>
+<div class="text-center">
+<div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition duration-300 hover:scale-110 hover:shadow-lg">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2">고객 만족</h3>
+<p class="text-gray-600">고객의 성공을 위해 최선을 다합니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 오시는 길 섹션 -->
+<section class="py-20 bg-gray-50 animate-fade-in" style="animation-delay: 0.7s;">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">오시는 길</h2>
+<div class="location-container">
+<div class="location-info">
+<h2>오시는 길</h2>
+<div class="info-grid">
+<div class="info-label">주소</div>
+<div class="info-content">경기도 안산시 상록구 해양3로 15, 그랑시티 시그니처타워 1609호</div>
+</div>
+<div class="info-grid">
+<div class="info-label">전화</div>
+<div class="info-content">031-504-4492</div>
+</div>
+<div class="info-grid">
+<div class="info-label">이메일</div>
+<div class="info-content">ahs_danbi@naver.com</div>
+</div>
+</div>
+<div class="map-container" style="position: relative; overflow: hidden; padding-top: 56.25%;">
+<iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.835940428784!2d126.8378378156828!3d37.28821937984449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35651c313a44d03d%3A0x6b7b2b0a3b2b0a3b!2sDanbi%20Co.%2C%20Ltd.!5e0!3m2!1sen!2skr!4v1678888888888!5m2!1sen!2skr" style="border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+</iframe>
+</div>
+</div>
+<div class="transportation">
+<h3 class="text-2xl font-semibold mb-6">교통편 안내</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="text-lg font-semibold mb-4">대중교통 이용시</h4>
+<ul>
+<li>지하철 4호선 한대앞역 1번 출구에서 도보 10분</li>
+<li>버스 정류장 '그랑시티' 하차</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">자가용 이용시</h4>
+<ul>
+<li>경부고속도로 안산IC에서 10분</li>
+<li>지하 주차장 이용 가능</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">주식회사 단비</h3>
+<p class="text-gray-400">정밀 금형 부품 전문기업</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">바로가기</h4>
+<ul class="space-y-2">
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="about.html">회사소개</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="products.html">제품소개</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="applications.html">적용사례</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="contact.html">문의하기</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">연락처</h4>
+<ul class="space-y-2 text-gray-400">
+<li>전화: 031-504-4492</li>
+<li>팩스: 050-4017-4498</li>
+<li>이메일: ahs_danbi@naver.com</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">오시는 길</h4>
+<ul class="space-y-2 text-gray-400">
+<li>경기도 안산시 상록구 해양3로 15, </li>
+<li>그랑시티 시그니처타워 1609호</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+<p>© 2025 주식회사 단비. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function initMap() {
+            // 회사 위치 좌표 (예시: 서울시 강남구)
+            const companyLocation = { lat: 37.5665, lng: 126.9780 };
+            
+            // 지도 생성
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: companyLocation,
+                zoom: 15,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#242f3e"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{"lightness": -80}]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#746855"}]
+                    },
+                    {
+                        "featureType": "administrative.locality",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#d59563"}]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#d59563"}]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#263c3f"}]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#6b9a76"}]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#38414e"}]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#212a37"}]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#9ca5b3"}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#746855"}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#1f2835"}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#f3d19c"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#17263c"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#515c6d"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{"lightness": -20}]
+                    }
+                ]
+            });
+
+            // 마커 생성
+            const marker = new google.maps.Marker({
+                position: companyLocation,
+                map: map,
+                title: '주식회사 단비',
+                animation: google.maps.Animation.DROP
+            });
+
+            // 정보창 생성
+            const infowindow = new google.maps.InfoWindow({
+                content: '<div style="padding: 10px;"><h3 style="margin-bottom: 5px;">주식회사 단비</h3><p>주소: 서울시 강남구</p></div>'
+            });
+
+            // 마커 클릭 시 정보창 표시
+            marker.addListener('click', () => {
+                infowindow.open(map, marker);
+            });
+        }
+
+        // 페이지 로드 시 지도 초기화
+        window.onload = initMap;
+    </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector('.floating-particles');
+  if (!container) return;
+  for (let i = 0; i < 80; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animationDuration = `${5 + Math.random() * 5}s`;
+    particle.style.opacity = Math.random();
+    container.appendChild(particle);
+  }
+});
+</script>
+</body>
+</html> 
