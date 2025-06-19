@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>자료실 - 주식회사 단비</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 30px 0;
+            margin-bottom: 40px;
+            background: none;
+            box-shadow: none;
+            position: relative;
+            z-index: 10;
+        }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -1px;
+            padding-left: 10px;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav ul {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav ul li a {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 6px 0;
+        }
+        .nav ul li a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 900px) {
+            .nav ul { gap: 18px; }
+        }
+        @media (max-width: 600px) {
+            .logo-text { font-size: 1.1rem; }
+            .nav ul li a { font-size: 0.95rem; }
+        }
+        /* Custom styles for the new design */
+        body {
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .main-background {
+            background-color: #1a202c; /* Reverted to a dark grey/blue for a professional look, similar to bg-gray-900 or bg-blue-800 */
+            padding-top: 6rem; /* Space for fixed nav */
+            padding-bottom: 4rem;
+        }
+        .search-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .filter-button {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .filter-button.active {
+            background-color: #2563eb; /* Reverted to Tailwind blue-600 */
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .filter-button:hover:not(.active) {
+            background-color: #e5e7eb;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .catalog-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .catalog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .download-button {
+            background-color: #2563eb; /* Reverted to Tailwind blue-600 */
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease-in-out, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .download-button:hover {
+            background-color: #1d4ed8; /* Reverted to Tailwind blue-700 */
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .download-button svg {
+            margin-right: 8px;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default */
+        }
+
+        /* Existing navigation styles - ensure they are preserved or adapted */
+        .nav-item {
+            position: relative;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-item:hover .submenu {
+            display: block;
+        }
+        .submenu a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .submenu a:hover {
+            background: #f5f5f5;
+        }
+        /* Nested submenu styles */
+        .nav-item.has-nested-submenu .nested-submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1010;
+        }
+        .nav-item.has-nested-submenu:hover > .nested-submenu {
+            display: block;
+        }
+        .nav-item.has-nested-submenu .nested-submenu a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-item.has-nested-submenu .nested-submenu a:hover {
+            background: #f5f5f5;
+        }
+    </style>
+
+<style>
+    .floating-particles { position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: none;}
+    .particle { position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 50%; animation: float 6s infinite linear;}
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0;}
+        10% { opacity: 1;}
+        90% { opacity: 1;}
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0;}
+    }
+</style>
+</head>
+<body>
+<div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex-shrink-0">
+<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html">회사소개</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html">제품</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html">적용사례</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html">자료실</a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html">문의하기</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+
+<!-- New Catalog Search & Download Section -->
+<section class="main-background text-white text-center pb-12 animate-fade-in" style="animation-delay: 0.1s;">
+<div class="max-w-4xl mx-auto px-4">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">제품 카탈로그 검색 </h1>
+<p class="text-lg mb-8">브랜드명, 제품명, 제품코드로 원하는 카탈로그를 빠르게 찾아보세요</p>
+<div class="search-container p-6 mb-8">
+<div class="flex items-center space-x-4">
+<input class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" id="catalogSearchInput" placeholder="브랜드명, 제품명, 제품코드를 입력하세요 (예: TechBrand, 스마트폰, SPH-2024)" type="text"/>
+<button class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg flex items-center justify-center transform transition duration-300 hover:scale-105" id="searchButton">
+<svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                        검색
+                    </button>
+</div>
+<div class="flex flex-wrap items-center justify-center mt-6 text-gray-800">
+<span class="mr-3 font-semibold">필터:</span>
+<div class="flex space-x-2">
+<button class="filter-button active" data-filter="all">전체</button>
+<button class="filter-button" data-filter="Gremotool">Gremotool</button>
+<button class="filter-button" data-filter="" rohemetal"="">Rohemetal</button>
+<button class="filter-button" data-filter="TOSAM">TOSAM</button>
+<button class="filter-button" data-filter="Chadox">Chadox</button>
+</div>
+</div>
+<p class="text-sm text-gray-600 mt-4" id="resultsCount">전체 0개 제품이 표시됩니다.</p>
+</div>
+</div>
+</section>
+<!-- Catalog List Section -->
+<section class="py-12 bg-gray-50 animate-fade-in" style="animation-delay: 0.3s;">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="catalogListContainer">
+<!-- Catalogs will be dynamically loaded here -->
+</div>
+<p class="text-center text-gray-500 mt-8 hidden" id="noCatalogMessage">등록된 카탈로그가 없습니다. 관리자 페이지에서 카탈로그를 등록해주세요.</p>
+</div>
+</section>
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">주식회사 단비</h3>
+<p class="text-gray-400">정밀 금형 부품 전문기업</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">바로가기</h4>
+<ul class="space-y-2">
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="about.html">회사소개</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="products.html">제품소개</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="applications.html">적용사례</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="resources.html">자료실</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="contact.html">문의하기</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">연락처</h4>
+<ul class="space-y-2 text-gray-400">
+<li>전화: 031-504-4492</li>
+<li>팩스: 050-4017-4498</li>
+<li>이메일: ahs_danbi@naver.com</li>
+<li>주소: 경기도 안산시 상록구 해양3로 15, 그랑시티 시그니처타워 1609호</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">영업시간</h4>
+<ul class="space-y-2 text-gray-400">
+<li>평일: 09:00 - 18:00</li>
+<li>주말 및 공휴일 휴무</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+<p>© 2024 주식회사 단비. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<!-- 자료요청 모달 -->
+<div id="requestModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-8 relative">
+    <button onclick="closeRequestForm()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4 text-blue-700">자료요청</h2>
+    <form id="requestForm" class="space-y-4">
+      <div>
+        <label class="block text-gray-700 mb-1" for="company">회사명</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500" id="company" name="company" required type="text"/>
+      </div>
+      <div>
+        <label class="block text-gray-700 mb-1" for="phone">연락처</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500" id="phone" name="phone" required type="text"/>
+      </div>
+      <div>
+        <label class="block text-gray-700 mb-1" for="referrer">사이트 유입경로</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500" id="referrer" name="referrer" required type="text" placeholder="예: 네이버, 구글, 직접 방문 등"/>
+      </div>
+      <div>
+        <label class="block text-gray-700 mb-1" for="catalog">요청 카탈로그</label>
+        <input class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100" id="catalog" name="catalog" readonly/>
+      </div>
+      <div class="flex items-center">
+        <input class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" id="privacyAgree" name="privacyAgree" required type="checkbox"/>
+        <label class="ml-2 block text-gray-700 text-sm" for="privacyAgree">개인정보 수집 및 이용에 동의합니다</label>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">요청하기</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    function createParticles() {
+        const container = document.querySelector('.floating-particles');
+        const particleCount = 50;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            container.appendChild(particle);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        createParticles();
+    });
+</script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // loadBrandsForMenu(); // Keep this for the product submenu
+            
+            // Apply animation to sections
+            const sections = document.querySelectorAll('.animate-fade-in');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`; // Stagger animation
+            });
+
+            const catalogs = [
+                {
+                    id: 'C001',
+                    title: '최신 스마트폰 카탈로그',
+                    brand: 'Gremotool',
+                    productName: '스마트폰',
+                    image: 'images/Image_fx (28).jpg',
+                    description: '2024년 최신 스마트폰 모델의 혁신적인 기능과 디자인을 소개합니다.',
+                    file: 'catalogs/TechBrand_Smartphone_2024.pdf'
+                },
+                {
+                    id: 'C002',
+                    title: '스마트 홈 기기 안내서',
+                    brand: 'Rohemetal',
+                    productName: '스마트 스피커',
+                    image: 'images/Image_fx (121).jpg',
+                    description: '우리 집을 더욱 스마트하게 만드는 다양한 스마트 홈 기기 솔루션을 만나보세요.',
+                    file: 'catalogs/SmartHome_Devices_Guide.pdf'
+                },
+                {
+                    id: 'C003',
+                    title: '전문가용 태블릿 제품 가이드',
+                    brand: 'TOSAM',
+                    productName: '태블릿',
+                    image: 'images/Image_fx (25).jpg',
+                    description: '고성능 작업을 위한 전문가용 태블릿의 모든 정보를 담고 있습니다.',
+                    file: 'catalogs/ProDevice_Tablet_Guide.pdf'
+                },
+                {
+                    id: 'C004',
+                    title: '웨어러블 기술 총람',
+                    brand: '"Chadox',
+                    productName: '스마트워치',
+                    image: 'images/Image_fx (24).jpg',
+                    description: '건강과 편리함을 동시에 잡는 최신 웨어러블 기기들을 소개합니다.',
+                    file: 'catalogs/WearableTech_Overview.pdf'
+                },
+                {
+                    id: 'C005',
+                    title: '산업용 로봇 솔루션 카탈로그',
+                    brand: 'Autowell',
+                    productName: '산업용 로봇',
+                    image: 'images/Image_fx (22).jpg',
+                    description: '정밀 생산을 위한 첨단 산업용 로봇 시스템 및 솔루션 정보입니다.',
+                    file: 'catalogs/IndustrialRobot_Solution.pdf'
+                },
+                {
+                    id: 'C006',
+                    title: '고성능 드론 시스템 안내서',
+                    brand: 'Gremotool',
+                    productName: '드론',
+                    image: 'images/Image_fx (21).jpg',
+                    description: '다양한 산업 분야에 활용 가능한 고성능 드론 시스템에 대한 상세 안내서입니다.',
+                    file: 'catalogs/HighPerformance_Drone.pdf'
+                }
+            ];
+
+            let currentFilter = 'all';
+
+            const searchInput = document.getElementById('catalogSearchInput');
+            const searchButton = document.getElementById('searchButton');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const catalogListContainer = document.getElementById('catalogListContainer');
+            const noCatalogMessage = document.getElementById('noCatalogMessage');
+            const resultsCount = document.getElementById('resultsCount');
+
+            // Event Listeners
+            searchButton.addEventListener('click', filterCatalogs);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    filterCatalogs();
+                }
+            });
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    filterCatalogs();
+                });
+            });
+
+            // Initial load
+            filterCatalogs();
+
+            function filterCatalogs() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filtered = catalogs.filter(catalog => {
+                    const matchesSearch = (
+                        catalog.brand.toLowerCase().includes(searchTerm) ||
+                        catalog.productName.toLowerCase().includes(searchTerm) ||
+                        catalog.description.toLowerCase().includes(searchTerm)
+                    );
+                    const matchesFilter = (currentFilter === 'all' || catalog.brand === currentFilter);
+                    return matchesSearch && matchesFilter;
+                });
+
+                displayCatalogs(filtered);
+            }
+
+            function displayCatalogs(filteredCatalogs) {
+                catalogListContainer.innerHTML = '';
+                if (filteredCatalogs.length === 0) {
+                    noCatalogMessage.classList.remove('hidden');
+                    resultsCount.textContent = `전체 0개 제품이 표시됩니다.`;
+                } else {
+                    noCatalogMessage.classList.add('hidden');
+                    filteredCatalogs.forEach(catalog => {
+                        const card = document.createElement('div');
+                        card.className = 'catalog-card p-6 rounded-lg shadow-md animate-fade-in'; // Add animate-fade-in
+                        card.style.animationDelay = `0.1s`; // Stagger animation for each card
+                        card.innerHTML = `
+                            <img src="${catalog.image}" alt="${catalog.title}" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">${catalog.title}</h3>
+                            <p class="text-gray-600 mb-2"><strong>브랜드:</strong> ${catalog.brand}</p>
+                            <p class="text-gray-700 text-sm mb-4">${catalog.description}</p>
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="text-gray-500 text-sm">파일 크기: ${catalog.file.split('/').pop()}</span>
+                                <a href="#" onclick="openRequestForm('${catalog.title}')" class="download-button transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    자료요청
+                                </a>
+                            </div>
+                        `;
+                        catalogListContainer.appendChild(card);
+                    });
+                    resultsCount.textContent = `전체 ${filteredCatalogs.length}개 제품이 표시됩니다.`;
+                }
+            }
+
+            function updateProductBrandSubmenu(brands) {
+                const submenu = document.getElementById('productSubmenu');
+                if (submenu) {
+                    submenu.innerHTML = '';
+                    const staticBrands = ["HASCO", "DME", "PUNCH", "MISUMI", "RABOURDIN", "KALLER"];
+                    if (staticBrands.length === 0) {
+                        const li = document.createElement('li');
+                        li.textContent = '등록된 브랜드 없음';
+                        li.className = 'px-4 py-2 text-gray-500';
+                        submenu.appendChild(li);
+                    } else {
+                        staticBrands.forEach(brand => {
+                            const a = document.createElement('a');
+                            a.href = `products.html#${encodeURIComponent(brand)}`;
+                            a.textContent = brand;
+                            a.className = 'block py-2 px-4 hover:bg-gray-100 rounded';
+                            submenu.appendChild(a);
+                        });
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+    // 자료요청 모달 제어 함수
+    function openRequestForm(catalogTitle) {
+        document.getElementById('requestModal').classList.remove('hidden');
+        document.getElementById('catalog').value = catalogTitle;
+    }
+    function closeRequestForm() {
+        document.getElementById('requestModal').classList.add('hidden');
+        document.getElementById('requestForm').reset();
+    }
+    document.getElementById('requestForm').onsubmit = function(e) {
+        e.preventDefault();
+        // 실제 전송 로직은 필요시 추가
+        alert('자료요청이 접수되었습니다! 담당자가 확인 후 연락드리겠습니다.');
+        closeRequestForm();
+    };
+    // ESC로 닫기
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeRequestForm();
+    });
+    </script>
+</body>
+</html> 
