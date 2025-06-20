@@ -384,18 +384,30 @@
 </style>
 </head>
 <body>
-<nav class="bg-white bg-opacity-10 backdrop-blur-md shadow-lg fixed w-full z-50">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<a class="text-white hover:text-yellow-300 text-2xl font-bold transition" href="index.html">주식회사 단비</a>
-<div class="space-x-6 hidden md:block">
-<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="about.html">회사소개</a>
-<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="category.html">제품</a>
-<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="applications.html">적용사례</a>
-<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="resources.html">자료실</a>
-<a class="text-white hover:text-yellow-300 text-lg font-medium transition" href="contact.html">문의하기</a>
+<nav class="bg-white shadow-lg fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex-shrink-0">
+<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
+</div>
+</div>
 </div>
 </div>
 </nav>
+<style>
+  .ko { display: inline; }
+  .en { display: none; }
+  a:hover .ko { display: none; }
+  a:hover .en { display: inline; }
+</style>
 <div class="floating-particles"></div>
 <!-- 네비게이션 바 시작 -->
 <!-- 네비게이션 바 끝 -->
@@ -504,59 +516,7 @@
 </div>
 </section>
 <!-- 주요 제품 섹션 -->
-<div class="products-container">
-<div class="product-card">
-<div class="product-image">
-<img alt="정밀 금형 부품" src="images/product1.jpg"/>
-</div>
-<h3 class="product-title">정밀 금형 부품</h3>
-<p class="product-description">최첨단 기술로 제작된 고품질 금형 부품</p>
-<div class="mt-6 flex justify-center gap-4">
-<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
-    제품 보기
-  </a>
-<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
-    문의하기
-  </a>
-</div>
-</div>
-<div class="product-card">
-<div class="product-image">
-<img alt="자동화 시스템" src="images/product2.jpg"/>
-</div>
-<h3 class="product-title">자동화 시스템</h3>
-<p class="product-description">효율적인 생산을 위한 자동화 솔루션</p>
-<div class="mt-6 flex justify-center gap-4">
-<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
-    제품 보기
-  </a>
-<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
-    문의하기
-  </a>
-</div>
-</div>
-<div class="product-card">
-<div class="product-image">
-<img alt="맞춤형 부품" src="images/product3.jpg"/>
-</div>
-<h3 class="product-title">맞춤형 부품</h3>
-<p class="product-description">고객의 요구에 맞는 맞춤형 부품 제작</p>
-<div class="mt-6 flex justify-center gap-4">
-<a class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow hover:from-blue-600 hover:to-blue-800 transition" href="category.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-9H9v2h2V9z" fill-rule="evenodd"></path></svg>
-    제품 보기
-  </a>
-<a class="inline-flex items-center px-6 py-3 bg-transparent border border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full hover:bg-blue-600 transition" href="contact.html">
-<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 20 20"><path d="M2 5a2 2 0 012-2h3a1 1 0 011 1v2.528a1 1 0 01-.293.707L6.414 9l1.707 1.707a1 1 0 01.293.707V14a1 1 0 01-1 1H4a2 2 0 01-2-2V5zm13.293.293a1 1 0 011.414 0L18 6.586a1 1 0 010 1.414L13.414 12l-1.707 1.707a1 1 0 01-1.414 0L10 13.414 15.586 8 13.293 5.707a1 1 0 010-1.414z"></path></svg>
-    문의하기
-  </a>
-</div>
-</div>
-</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.createElement('div');

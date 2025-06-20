@@ -204,6 +204,13 @@
         100% { transform: translateY(-100px) rotate(360deg); opacity: 0;}
     }
 </style>
+<!-- emailjs 라이브러리 및 초기화 코드 (head 안에 추가) -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init('service_pkgx1ta');
+  })();
+</script>
 </head>
 <body>
 <div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
@@ -535,5 +542,31 @@
         if (e.key === 'Escape') closeRequestForm();
     });
     </script>
+<!-- emailjs 연동 스크립트 (body 맨 아래, </body> 위에 추가) -->
+<script>
+document.getElementById('requestForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // 개인정보 동의 체크
+  if (!document.getElementById('privacyAgree').checked) {
+    alert('개인정보 수집 및 이용에 동의해 주세요.');
+    return;
+  }
+
+  // 요청 카탈로그 값이 비어있으면 기본값 설정
+  if (!document.getElementById('catalog').value) {
+    document.getElementById('catalog').value = '스마트 홈 기기 안내서';
+  }
+
+  emailjs.sendForm('service_pkgx1ta', 'template_2lg76gr', this)
+    .then(function() {
+      alert('자료 요청이 성공적으로 접수되었습니다!');
+      document.getElementById('requestForm').reset();
+      if (typeof closeRequestForm === 'function') closeRequestForm();
+    }, function(error) {
+      alert('메일 전송에 실패했습니다: ' + JSON.stringify(error));
+    });
+});
+</script>
 </body>
 </html> 

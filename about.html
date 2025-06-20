@@ -364,23 +364,29 @@
 </head>
 <body class="bg-gray-50"><div class="floating-particles"></div>
 <div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
-<div class="max-w-7xl mx-auto px-4">
-<div class="flex justify-between items-center h-16">
-<div class="flex-shrink-0">
-<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
-</div>
-<div class="hidden md:block">
-<div class="ml-10 flex items-baseline space-x-4">
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html">회사소개</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html">제품</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html">적용사례</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html">자료실</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html">문의하기</a>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+<style>
+  .ko { display: inline; }
+  .en { display: none; }
+  a:hover .ko { display: none; }
+  a:hover .en { display: inline; }
+</style>
 <!-- 히어로 섹션 -->
 <section class="hero-section flex items-center justify-center text-white">
 <div class="text-center">
