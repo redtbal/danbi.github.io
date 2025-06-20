@@ -56,6 +56,16 @@
             transition: color 0.2s;
             padding: 6px 0;
         }
+        .nav ul li a .en {
+            display: none;
+        }
+        .nav ul li a:hover .ko {
+            display: none;
+        }
+        .nav ul li a:hover .en {
+            display: inline;
+            color: #ffd700;
+        }
         .nav ul li a:hover {
             color: #ffd700;
         }
@@ -192,6 +202,114 @@
         .nav-item.has-nested-submenu .nested-submenu a:hover {
             background: #f5f5f5;
         }
+        .ko { display: inline; }
+        .en { display: none; }
+        a:hover .ko { display: none; }
+        a:hover .en { display: inline; }
+
+        /* 카드형 제품군 스타일 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 32px 24px 24px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            display: block;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .product-list {
+            text-align: left;
+            margin: 18px 0 0 0;
+            padding: 0 0 0 10px;
+        }
+        .product-list li {
+            color: #fff;
+            font-size: 1.01rem;
+            margin-bottom: 8px;
+            list-style: disc inside;
+            position: relative;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 2px 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .badge.new {
+            background: #6c63ff;
+            color: #fff;
+        }
+        .badge.hot {
+            background: #ff5e62;
+            color: #fff;
+        }
+        .request-btn {
+            margin-top: 18px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .request-btn:hover {
+            background: #1d4ed8;
+        }
+        .ko { display: inline; }
+        .en { display: none; }
+        a:hover .ko { display: none; }
+        a:hover .en { display: inline; }
     </style>
 
 <style>
@@ -217,15 +335,17 @@
 <div class="max-w-7xl mx-auto px-4">
 <div class="flex justify-between items-center h-16">
 <div class="flex-shrink-0">
-<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">주식회사 단비</a>
+<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
+  <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
+</a>
 </div>
 <div class="hidden md:block">
 <div class="ml-10 flex items-baseline space-x-4">
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html">회사소개</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html">제품</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html">적용사례</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html">자료실</a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html">문의하기</a>
+<a href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+<a href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+<a href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+<a href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+<a href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
 </div>
 </div>
 </div>
@@ -235,40 +355,188 @@
 
 <!-- New Catalog Search & Download Section -->
 <section class="main-background text-white text-center pb-12 animate-fade-in" style="animation-delay: 0.1s;">
-<div class="max-w-4xl mx-auto px-4">
-<h1 class="text-4xl md:text-5xl font-bold mb-4">제품 카탈로그 검색 </h1>
-<p class="text-lg mb-8">브랜드명, 제품명, 제품코드로 원하는 카탈로그를 빠르게 찾아보세요</p>
-<div class="search-container p-6 mb-8">
-<div class="flex items-center space-x-4">
-<input class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" id="catalogSearchInput" placeholder="브랜드명, 제품명, 제품코드를 입력하세요 (예: TechBrand, 스마트폰, SPH-2024)" type="text"/>
-<button class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg flex items-center justify-center transform transition duration-300 hover:scale-105" id="searchButton">
-<svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-                        검색
-                    </button>
-</div>
-<div class="flex flex-wrap items-center justify-center mt-6 text-gray-800">
-<span class="mr-3 font-semibold">필터:</span>
-<div class="flex space-x-2">
-<button class="filter-button active" data-filter="all">전체</button>
-<button class="filter-button" data-filter="Gremotool">Gremotool</button>
-<button class="filter-button" data-filter="" rohemetal"="">Rohemetal</button>
-<button class="filter-button" data-filter="TOSAM">TOSAM</button>
-<button class="filter-button" data-filter="Chadox">Chadox</button>
-</div>
-</div>
-<p class="text-sm text-gray-600 mt-4" id="resultsCount">전체 0개 제품이 표시됩니다.</p>
-</div>
-</div>
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">제품 카탈로그 검색 </h1>
+    <p class="text-lg mb-8">브랜드명, 제품명, 제품코드로 원하는 카탈로그를 빠르게 찾아보세요</p>
+    <div class="search-container p-6 mb-8">
+      <div class="flex items-center space-x-4">
+        <input class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" id="catalogSearchInput" placeholder="제품명, 모델명, 코드, 설명, 숫자 등으로 검색" type="text"/>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg flex items-center justify-center transform transition duration-300 hover:scale-105" id="searchButton">
+          <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          검색
+        </button>
+      </div>
+      <p class="text-sm text-gray-600 mt-4" id="resultsCount">전체 9개 제품군이 표시됩니다.</p>
+    </div>
+    <div id="searchResultGrid" class="products-grid"></div>
+    <p class="text-center text-gray-500 mt-8 hidden" id="noCatalogMessage">검색 결과가 없습니다.</p>
+  </div>
 </section>
-<!-- Catalog List Section -->
-<section class="py-12 bg-gray-50 animate-fade-in" style="animation-delay: 0.3s;">
-<div class="max-w-7xl mx-auto px-4">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="catalogListContainer">
-<!-- Catalogs will be dynamically loaded here -->
-</div>
-<p class="text-center text-gray-500 mt-8 hidden" id="noCatalogMessage">등록된 카탈로그가 없습니다. 관리자 페이지에서 카탈로그를 등록해주세요.</p>
-</div>
-</section>
+
+<!-- 9개 제품군 데이터 및 검색/렌더링 스크립트 -->
+<script>
+  const productGroups = [
+    {
+      title: '5축 바이스',
+      icon: '<i class="fa-solid fa-screwdriver-wrench"></i>',
+      img: 'images/products/vx.png',
+      items: [
+        '5축 정밀 바이스 VX-100',
+        '5축 멀티 바이스 VX-200',
+        '5축 고정밀 바이스 VX-300',
+        '5축 컴팩트 바이스 VX-150'
+      ],
+      badge: ['NEW', '', '', '']
+    },
+    {
+      title: '제로포인트',
+      icon: '<i class="fa-solid fa-bullseye"></i>',
+      img: 'images/products/zp.png',
+      items: [
+        '제로포인트 클램핑 시스템 ZP-52',
+        '제로포인트 어댑터 ZP-96',
+        '제로포인트 스탠다드 ZP-138',
+        '제로포인트 미니 시스템 ZP-25'
+      ],
+      badge: ['HOT', '', '', '']
+    },
+    {
+      title: '원형 고정 클램프',
+      icon: '<i class="fa-solid fa-circle"></i>',
+      img: 'images/products/rc.png',
+      items: [
+        '원형 고정 클램프 RC-80',
+        '원형 고정 클램프 RC-100',
+        '원형 고정 클램프 RC-125',
+        '원형 고정 클램프 RC-160'
+      ],
+      badge: ['', '', 'NEW', '']
+    },
+    {
+      title: '스페셜 지그',
+      icon: '<i class="fa-solid fa-puzzle-piece"></i>',
+      img: 'images/products/sj.png',
+      items: [
+        '맞춤형 가공 지그 SJ-A100',
+        '복합 가공 지그 SJ-B200',
+        '정밀 측정 지그 SJ-C150',
+        '다기능 지그 SJ-D300'
+      ],
+      badge: ['', 'HOT', '', '']
+    },
+    {
+      title: 'Tooling Column',
+      icon: '<i class="fa-solid fa-building-columns"></i>',
+      img: 'images/products/tc.png',
+      items: [
+        '툴링 컬럼 TC-250',
+        '툴링 컬럼 TC-400',
+        '툴링 컬럼 TC-600',
+        '조절식 툴링 컬럼 TC-ADJ'
+      ],
+      badge: ['', '', 'NEW', '']
+    },
+    {
+      title: '선반척 4조',
+      icon: '<i class="fa-solid fa-grip-lines"></i>',
+      img: 'images/products/lc.png',
+      items: [
+        '4조 선반척 LC-4J-125',
+        '4조 선반척 LC-4J-160',
+        '4조 선반척 LC-4J-200',
+        '4조 선반척 LC-4J-250'
+      ],
+      badge: ['', 'HOT', '', '']
+    },
+    {
+      title: '3축 바이스',
+      icon: '<i class="fa-solid fa-grip-horizontal"></i>',
+      img: 'images/products/tv.png',
+      items: [
+        '3축 정밀 바이스 TV-100',
+        '3축 스탠다드 바이스 TV-150',
+        '3축 헤비듀티 바이스 TV-200',
+        '3축 컴팩트 바이스 TV-80'
+      ],
+      badge: ['', '', 'NEW', '']
+    },
+    {
+      title: '오일스키머',
+      icon: '<i class="fa-solid fa-oil-can"></i>',
+      img: 'images/products/os.png',
+      items: [
+        '오일 스키머 OS-100',
+        '오일 스키머 OS-200',
+        '자동 오일 스키머 OS-AUTO',
+        '산업용 오일 스키머 OS-300'
+      ],
+      badge: ['', 'HOT', '', '']
+    },
+    {
+      title: '툴태그 Tool Tag',
+      icon: '<i class="fa-solid fa-tags"></i>',
+      img: 'images/products/tt.png',
+      items: [
+        '스탠다드 툴태그 TT-S100',
+        '방수 툴태그 TT-W100',
+        '고온용 툴태그 TT-H100',
+        'QR코드 툴태그 TT-QR100'
+      ],
+      badge: ['', 'NEW', '', 'HOT']
+    }
+  ];
+  // 검색 기능
+  const searchInput = document.getElementById('catalogSearchInput');
+  const searchButton = document.getElementById('searchButton');
+  const searchResultGrid = document.getElementById('searchResultGrid');
+  const noCatalogMessage = document.getElementById('noCatalogMessage');
+  const resultsCount = document.getElementById('resultsCount');
+
+  function renderProducts(filtered) {
+    searchResultGrid.innerHTML = '';
+    if (filtered.length === 0) {
+      noCatalogMessage.classList.remove('hidden');
+      resultsCount.textContent = '검색 결과 0개';
+    } else {
+      noCatalogMessage.classList.add('hidden');
+      resultsCount.textContent = `검색 결과 ${filtered.length}개 제품군`;
+      filtered.forEach((group, idx) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-icon">
+            <img src="${group.img}" alt="${group.title}" class="product-img" onerror="this.style.display='none';this.parentNode.innerHTML='${group.icon}';">
+          </div>
+          <div class="product-title">${group.title}</div>
+          <ul class="product-list">
+            ${group.items.map((item, i) => `<li>${item}${group.badge[i] ? ` <span class='badge ${group.badge[i].toLowerCase()}'>${group.badge[i]}</span>` : ''}</li>`).join('')}
+          </ul>
+          <button class="request-btn" onclick="openRequestForm('${group.title}')">자료요청</button>
+        `;
+        searchResultGrid.appendChild(card);
+      });
+    }
+  }
+  function filterProducts() {
+    const term = searchInput.value.trim().toLowerCase();
+    if (!term) {
+      renderProducts(productGroups);
+      return;
+    }
+    const filtered = productGroups.filter(group => {
+      if (group.title.toLowerCase().includes(term)) return true;
+      return group.items.some(item => item.toLowerCase().includes(term));
+    });
+    renderProducts(filtered);
+  }
+  searchButton.addEventListener('click', filterProducts);
+  searchInput.addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') filterProducts();
+  });
+  // 페이지 로드시 전체 표시
+  renderProducts(productGroups);
+</script>
+
 <!-- 푸터 -->
 <footer class="bg-gray-800 text-white py-12">
 <div class="max-w-7xl mx-auto px-4">
@@ -359,169 +627,6 @@
     });
 </script>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // loadBrandsForMenu(); // Keep this for the product submenu
-            
-            // Apply animation to sections
-            const sections = document.querySelectorAll('.animate-fade-in');
-            sections.forEach((section, index) => {
-                section.style.animationDelay = `${index * 0.2}s`; // Stagger animation
-            });
-
-            const catalogs = [
-                {
-                    id: 'C001',
-                    title: '최신 스마트폰 카탈로그',
-                    brand: 'Gremotool',
-                    productName: '스마트폰',
-                    image: 'images/Image_fx (28).jpg',
-                    description: '2024년 최신 스마트폰 모델의 혁신적인 기능과 디자인을 소개합니다.',
-                    file: 'catalogs/TechBrand_Smartphone_2024.pdf'
-                },
-                {
-                    id: 'C002',
-                    title: '스마트 홈 기기 안내서',
-                    brand: 'Rohemetal',
-                    productName: '스마트 스피커',
-                    image: 'images/Image_fx (121).jpg',
-                    description: '우리 집을 더욱 스마트하게 만드는 다양한 스마트 홈 기기 솔루션을 만나보세요.',
-                    file: 'catalogs/SmartHome_Devices_Guide.pdf'
-                },
-                {
-                    id: 'C003',
-                    title: '전문가용 태블릿 제품 가이드',
-                    brand: 'TOSAM',
-                    productName: '태블릿',
-                    image: 'images/Image_fx (25).jpg',
-                    description: '고성능 작업을 위한 전문가용 태블릿의 모든 정보를 담고 있습니다.',
-                    file: 'catalogs/ProDevice_Tablet_Guide.pdf'
-                },
-                {
-                    id: 'C004',
-                    title: '웨어러블 기술 총람',
-                    brand: '"Chadox',
-                    productName: '스마트워치',
-                    image: 'images/Image_fx (24).jpg',
-                    description: '건강과 편리함을 동시에 잡는 최신 웨어러블 기기들을 소개합니다.',
-                    file: 'catalogs/WearableTech_Overview.pdf'
-                },
-                {
-                    id: 'C005',
-                    title: '산업용 로봇 솔루션 카탈로그',
-                    brand: 'Autowell',
-                    productName: '산업용 로봇',
-                    image: 'images/Image_fx (22).jpg',
-                    description: '정밀 생산을 위한 첨단 산업용 로봇 시스템 및 솔루션 정보입니다.',
-                    file: 'catalogs/IndustrialRobot_Solution.pdf'
-                },
-                {
-                    id: 'C006',
-                    title: '고성능 드론 시스템 안내서',
-                    brand: 'Gremotool',
-                    productName: '드론',
-                    image: 'images/Image_fx (21).jpg',
-                    description: '다양한 산업 분야에 활용 가능한 고성능 드론 시스템에 대한 상세 안내서입니다.',
-                    file: 'catalogs/HighPerformance_Drone.pdf'
-                }
-            ];
-
-            let currentFilter = 'all';
-
-            const searchInput = document.getElementById('catalogSearchInput');
-            const searchButton = document.getElementById('searchButton');
-            const filterButtons = document.querySelectorAll('.filter-button');
-            const catalogListContainer = document.getElementById('catalogListContainer');
-            const noCatalogMessage = document.getElementById('noCatalogMessage');
-            const resultsCount = document.getElementById('resultsCount');
-
-            // Event Listeners
-            searchButton.addEventListener('click', filterCatalogs);
-            searchInput.addEventListener('keyup', function(event) {
-                if (event.key === 'Enter') {
-                    filterCatalogs();
-                }
-            });
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    currentFilter = this.dataset.filter;
-                    filterCatalogs();
-                });
-            });
-
-            // Initial load
-            filterCatalogs();
-
-            function filterCatalogs() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const filtered = catalogs.filter(catalog => {
-                    const matchesSearch = (
-                        catalog.brand.toLowerCase().includes(searchTerm) ||
-                        catalog.productName.toLowerCase().includes(searchTerm) ||
-                        catalog.description.toLowerCase().includes(searchTerm)
-                    );
-                    const matchesFilter = (currentFilter === 'all' || catalog.brand === currentFilter);
-                    return matchesSearch && matchesFilter;
-                });
-
-                displayCatalogs(filtered);
-            }
-
-            function displayCatalogs(filteredCatalogs) {
-                catalogListContainer.innerHTML = '';
-                if (filteredCatalogs.length === 0) {
-                    noCatalogMessage.classList.remove('hidden');
-                    resultsCount.textContent = `전체 0개 제품이 표시됩니다.`;
-                } else {
-                    noCatalogMessage.classList.add('hidden');
-                    filteredCatalogs.forEach(catalog => {
-                        const card = document.createElement('div');
-                        card.className = 'catalog-card p-6 rounded-lg shadow-md animate-fade-in'; // Add animate-fade-in
-                        card.style.animationDelay = `0.1s`; // Stagger animation for each card
-                        card.innerHTML = `
-                            <img src="${catalog.image}" alt="${catalog.title}" class="w-full h-48 object-cover rounded-lg mb-4">
-                            <h3 class="text-xl font-semibold mb-2">${catalog.title}</h3>
-                            <p class="text-gray-600 mb-2"><strong>브랜드:</strong> ${catalog.brand}</p>
-                            <p class="text-gray-700 text-sm mb-4">${catalog.description}</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <span class="text-gray-500 text-sm">파일 크기: ${catalog.file.split('/').pop()}</span>
-                                <a href="#" onclick="openRequestForm('${catalog.title}')" class="download-button transform transition duration-300 hover:scale-105 hover:shadow-lg">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                                    자료요청
-                                </a>
-                            </div>
-                        `;
-                        catalogListContainer.appendChild(card);
-                    });
-                    resultsCount.textContent = `전체 ${filteredCatalogs.length}개 제품이 표시됩니다.`;
-                }
-            }
-
-            function updateProductBrandSubmenu(brands) {
-                const submenu = document.getElementById('productSubmenu');
-                if (submenu) {
-                    submenu.innerHTML = '';
-                    const staticBrands = ["HASCO", "DME", "PUNCH", "MISUMI", "RABOURDIN", "KALLER"];
-                    if (staticBrands.length === 0) {
-                        const li = document.createElement('li');
-                        li.textContent = '등록된 브랜드 없음';
-                        li.className = 'px-4 py-2 text-gray-500';
-                        submenu.appendChild(li);
-                    } else {
-                        staticBrands.forEach(brand => {
-                            const a = document.createElement('a');
-                            a.href = `products.html#${encodeURIComponent(brand)}`;
-                            a.textContent = brand;
-                            a.className = 'block py-2 px-4 hover:bg-gray-100 rounded';
-                            submenu.appendChild(a);
-                        });
-                    }
-                }
-            }
-        });
-    </script>
-    <script>
     // 자료요청 모달 제어 함수
     function openRequestForm(catalogTitle) {
         document.getElementById('requestModal').classList.remove('hidden');
@@ -541,7 +646,7 @@
     window.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeRequestForm();
     });
-    </script>
+</script>
 <!-- emailjs 연동 스크립트 (body 맨 아래, </body> 위에 추가) -->
 <script>
 document.getElementById('requestForm').addEventListener('submit', function(e) {
