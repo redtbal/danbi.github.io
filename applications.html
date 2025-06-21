@@ -254,15 +254,26 @@ const galleryItems = [
   { type: 'video', src: 'video/sample1.mp4' }
 ];
 
+const ITEMS_PER_PAGE = 12;
+let currentPage = 1;
+let currentFilter = 'all';
+
 const galleryGrid = document.getElementById('gallery-grid');
 const photoTemplate = document.getElementById('photo-template');
 const videoTemplate = document.getElementById('video-template');
 const filterBtns = document.querySelectorAll('.filter-btn');
+const pagination = document.getElementById('pagination');
 
-function renderGallery(filter = 'all') {
+function renderGallery(filter = 'all', page = 1) {
   galleryGrid.innerHTML = '';
   let filtered = filter === 'all' ? galleryItems : galleryItems.filter(item => item.type === filter);
-  filtered.forEach(item => {
+  const totalItems = filtered.length;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const startIdx = (page - 1) * ITEMS_PER_PAGE;
+  const endIdx = startIdx + ITEMS_PER_PAGE;
+  const pageItems = filtered.slice(startIdx, endIdx);
+
+  pageItems.forEach(item => {
     let node;
     if (item.type === 'photo') {
       node = photoTemplate.content.cloneNode(true);
@@ -275,18 +286,61 @@ function renderGallery(filter = 'all') {
     }
     galleryGrid.appendChild(node);
   });
+  renderPagination(totalPages, page);
+}
+
+function renderPagination(totalPages, currentPage) {
+  pagination.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  // 이전 버튼
+  const prevBtn = document.createElement('button');
+  prevBtn.textContent = '이전';
+  prevBtn.className = 'px-3 py-1 rounded bg-gray-200 text-gray-700';
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => {
+    if (currentPage > 1) {
+      renderGallery(currentFilter, currentPage - 1);
+    }
+  };
+  pagination.appendChild(prevBtn);
+
+  // 숫자 버튼
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.textContent = i;
+    pageBtn.className = 'px-3 py-1 rounded ' + (i === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700');
+    pageBtn.onclick = () => {
+      renderGallery(currentFilter, i);
+    };
+    pagination.appendChild(pageBtn);
+  }
+
+  // 다음 버튼
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = '다음';
+  nextBtn.className = 'px-3 py-1 rounded bg-gray-200 text-gray-700';
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => {
+    if (currentPage < totalPages) {
+      renderGallery(currentFilter, currentPage + 1);
+    }
+  };
+  pagination.appendChild(nextBtn);
 }
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     filterBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
-    renderGallery(this.dataset.filter);
+    currentFilter = this.dataset.filter;
+    currentPage = 1;
+    renderGallery(currentFilter, currentPage);
   });
 });
 
 // 최초 전체 표시
-renderGallery('all');
+renderGallery('all', 1);
 </script>
 
 <script>
