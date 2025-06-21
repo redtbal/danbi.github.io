@@ -331,26 +331,49 @@
 </script>
 </head>
 <body>
-<div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
-<div class="max-w-7xl mx-auto px-4">
-<div class="flex justify-between items-center h-16">
-<div class="flex-shrink-0">
-<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
-  <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
-</a>
-</div>
-<div class="hidden md:block">
-<div class="ml-10 flex items-baseline space-x-4">
-<a href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
-<a href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
-<a href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
-<a href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
-<a href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
-</div>
-</div>
-</div>
-</div>
+<!-- 반응형 네비게이션 시작 -->
+<nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
+          <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
+        </div>
+      </div>
+      <!-- 모바일 햄버거 버튼 -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- 모바일 메뉴 -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-white">
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="about.html">회사소개</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="category.html">제품</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="applications.html">적용사례</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="resources.html">자료실</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="contact.html">문의하기</a>
+  </div>
 </nav>
+<script>
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+<!-- 반응형 네비게이션 끝 -->
 
 
 <!-- New Catalog Search & Download Section -->
@@ -573,7 +596,7 @@
 </div>
 </div>
 <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-<p>© 2025 주식회사 단비. All rights reserved.</p>
+<p>© 2024 주식회사 단비. All rights reserved.</p>
 </div>
 </div>
 </footer>

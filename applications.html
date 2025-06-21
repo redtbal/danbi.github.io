@@ -120,26 +120,49 @@
 </style>
 </head>
 <body>
-<div class="floating-particles"></div><nav class="bg-white shadow-lg fixed w-full z-50">
-<div class="max-w-7xl mx-auto px-4">
-<div class="flex justify-between items-center h-16">
-<div class="flex-shrink-0">
-<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
-  <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
-</a>
-</div>
-<div class="hidden md:block">
-<div class="ml-10 flex items-baseline space-x-4">
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
-<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
-</div>
-</div>
-</div>
-</div>
+<!-- 반응형 네비게이션 시작 -->
+<nav class="bg-white shadow-lg fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
+          <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
+        </div>
+      </div>
+      <!-- 모바일 햄버거 버튼 -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- 모바일 메뉴 -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-white">
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="about.html">회사소개</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="category.html">제품</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="applications.html">적용사례</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="resources.html">자료실</a>
+    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="contact.html">문의하기</a>
+  </div>
 </nav>
+<script>
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+<!-- 반응형 네비게이션 끝 -->
 
 <style>
   .ko { display: inline; }
@@ -185,110 +208,167 @@
 <!-- 푸터 -->
 <footer class="bg-gray-800 text-white py-12">
 <div class="max-w-7xl mx-auto px-4">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div>
 <h3 class="text-xl font-bold mb-4">주식회사 단비</h3>
-<p class="text-gray-400">최고의 품질과 서비스로 고객님의 성공을 함께합니다.</p>
+<p class="text-gray-400">정밀 금형 부품 전문기업</p>
 </div>
 <div>
-<h3 class="text-xl font-bold mb-4">연락처</h3>
-<p class="text-gray-400">전화: 031-504-4492</p>
-<p class="text-gray-400">팩스: 050-4017-4498</p>    
-<p class="text-gray-400">이메일: ahs_danbi@naver.com</p>
+<h4 class="text-lg font-semibold mb-4">바로가기</h4>
+<ul class="space-y-2">
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="about.html">회사소개</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="category.html">제품</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="applications.html">적용사례</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="resources.html">자료실</a></li>
+<li><a class="text-gray-400 hover:text-white transition duration-300" href="contact.html">문의하기</a></li>
+</ul>
 </div>
 <div>
-<h3 class="text-xl font-bold mb-4">주소</h3>
-<p class="text-gray-400">경기도 안산시 상록구 해양3로 15, 그랑시티 시그니처타워 1609호</p>
+<h4 class="text-lg font-semibold mb-4">연락처</h4>
+<ul class="space-y-2 text-gray-400">
+<li>전화: 031-504-4492</li>
+<li>팩스: 050-4017-4498</li>
+<li>이메일: ahs_danbi@naver.com</li>
+<li>주소: 경기도 안산시 상록구 해양3로 15, 그랑시티 시그니처타워 1609호</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">영업시간</h4>
+<ul class="space-y-2 text-gray-400">
+<li>평일: 09:00 - 18:00</li>
+<li>주말 및 공휴일 휴무</li>
+</ul>
 </div>
 </div>
 <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-<p>© 2025 주식회사 단비. All rights reserved.</p>
+<p>© 2024 주식회사 단비. All rights reserved.</p>
 </div>
 </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<!-- 사진/영상 갤러리 동적 표시 스크립트 -->
 <script>
-// 갤러리 데이터 준비
-const galleryData = [];
-for (let i = 1; i <= 20; i++) {
-  galleryData.push({ type: 'photo', src: `images/photo${i}.jpg`, alt: `갤러리 이미지 ${i}` });
-}
-galleryData.push({ type: 'video', src: 'video/sample1.mp4', alt: '동영상 예시 1' });
-galleryData.push({ type: 'video', src: 'video/sample2.mp4', alt: '동영상 예시 2' });
+// 실제 이미지/영상 파일 예시 배열
+const galleryItems = [
+  { type: 'photo', src: 'images/photo1.jpg' },
+  { type: 'photo', src: 'images/photo2.jpg' },
+  { type: 'photo', src: 'images/photo3.jpg' },
+  { type: 'photo', src: 'images/photo4.jpg' },
+  { type: 'photo', src: 'images/photo5.jpg' },
+  { type: 'photo', src: 'images/photo6.jpg' },
+  { type: 'photo', src: 'images/photo7.jpg' },
+  { type: 'photo', src: 'images/photo8.jpg' },
+  { type: 'photo', src: 'images/photo9.jpg' },
+  { type: 'photo', src: 'images/photo10.jpg' },
+  { type: 'video', src: 'video/sample1.mp4' }
+];
 
-const ITEMS_PER_PAGE = 12;
-let currentFilter = 'all';
-let currentPage = 1;
-
-function renderGallery() {
-  const galleryGrid = document.getElementById('gallery-grid');
-  galleryGrid.innerHTML = '';
-  let filtered = galleryData;
-  if (currentFilter !== 'all') {
-    filtered = galleryData.filter(item => item.type === currentFilter);
-  }
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  const pageItems = filtered.slice(start, end);
-  pageItems.forEach(item => {
-    if (item.type === 'photo') {
-      const tpl = document.getElementById('photo-template').content.cloneNode(true);
-      const img = tpl.querySelector('img');
-      img.src = item.src;
-      img.alt = item.alt;
-      galleryGrid.appendChild(tpl);
-    } else if (item.type === 'video') {
-      const tpl = document.getElementById('video-template').content.cloneNode(true);
-      const video = tpl.querySelector('video');
-      video.querySelector('source').src = item.src;
-      video.load();
-      tpl.querySelector('div.mt-2').textContent = item.alt;
-      galleryGrid.appendChild(tpl);
-    }
-  });
-  renderPagination(filtered.length);
-}
-
-function renderPagination(totalItems) {
-  const pagination = document.getElementById('pagination');
-  pagination.innerHTML = '';
-  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-  if (totalPages <= 1) return;
-  const prevBtn = document.createElement('button');
-  prevBtn.textContent = '이전';
-  prevBtn.className = 'px-3 py-1 rounded bg-gray-200 text-gray-700';
-  prevBtn.disabled = currentPage === 1;
-  prevBtn.onclick = () => { currentPage--; renderGallery(); };
-  pagination.appendChild(prevBtn);
-  for (let i = 1; i <= totalPages; i++) {
-    const pageBtn = document.createElement('button');
-    pageBtn.textContent = i;
-    pageBtn.className = 'px-3 py-1 rounded ' + (i === currentPage ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700');
-    pageBtn.onclick = () => { currentPage = i; renderGallery(); };
-    pagination.appendChild(pageBtn);
-  }
-  const nextBtn = document.createElement('button');
-  nextBtn.textContent = '다음';
-  nextBtn.className = 'px-3 py-1 rounded bg-gray-200 text-gray-700';
-  nextBtn.disabled = currentPage === totalPages;
-  nextBtn.onclick = () => { currentPage++; renderGallery(); };
-  pagination.appendChild(nextBtn);
-}
-
-// 필터 버튼 이벤트
+const galleryGrid = document.getElementById('gallery-grid');
+const photoTemplate = document.getElementById('photo-template');
+const videoTemplate = document.getElementById('video-template');
 const filterBtns = document.querySelectorAll('.filter-btn');
+
+function renderGallery(filter = 'all') {
+  galleryGrid.innerHTML = '';
+  let filtered = filter === 'all' ? galleryItems : galleryItems.filter(item => item.type === filter);
+  filtered.forEach(item => {
+    let node;
+    if (item.type === 'photo') {
+      node = photoTemplate.content.cloneNode(true);
+      node.querySelector('img').src = item.src;
+      node.querySelector('a').href = item.src;
+    } else if (item.type === 'video') {
+      node = videoTemplate.content.cloneNode(true);
+      node.querySelector('source').src = item.src;
+      node.querySelector('video').load();
+    }
+    galleryGrid.appendChild(node);
+  });
+}
+
 filterBtns.forEach(btn => {
   btn.addEventListener('click', function() {
     filterBtns.forEach(b => b.classList.remove('active'));
     this.classList.add('active');
-    currentFilter = this.getAttribute('data-filter');
-    currentPage = 1;
-    renderGallery();
+    renderGallery(this.dataset.filter);
   });
 });
 
-// 초기 렌더링
-renderGallery();
+// 최초 전체 표시
+renderGallery('all');
+</script>
+
+<script>
+    function createParticles() {
+        const container = document.querySelector('.floating-particles');
+        const particleCount = 50;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            container.appendChild(particle);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        createParticles();
+    });
+</script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update product submenu dynamically (if needed, otherwise remove)
+            updateProductBrandSubmenu([]); // Assuming product submenu is handled via JS
+
+            // Apply animation to sections
+            const sections = document.querySelectorAll('.animate-fade-in');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`; // Stagger animation
+            });
+        });
+
+        function updateProductBrandSubmenu(brands) {
+            const submenu = document.getElementById('productSubmenu');
+            if (submenu) {
+                submenu.innerHTML = '';
+
+                if (staticBrands.length === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = '등록된 브랜드 없음';
+                    li.className = 'px-4 py-2 text-gray-500';
+                    submenu.appendChild(li);
+                } else {
+                    staticBrands.forEach(brand => {
+                        const a = document.createElement('a');
+                        a.href = `products.html#${encodeURIComponent(brand)}`;
+                        a.textContent = brand;
+                        a.className = 'block py-2 px-4 hover:bg-gray-100 rounded';
+                        submenu.appendChild(a);
+                    });
+                }
+            }
+        }
+    </script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // 개인정보 동의 체크
+  if (!document.getElementById('privacyAgree').checked) {
+    alert('개인정보 수집 및 이용에 동의해 주세요.');
+    return;
+  }
+
+  // EmailJS로 메일 전송
+  // 수신자 메일은 EmailJS 대시보드(https://dashboard.emailjs.com/) > 템플릿(template_2lg76gr) > To(받는사람)에서 설정하세요.
+  emailjs.sendForm('service_pkgx1ta', 'template_2lg76gr', this)
+    .then(function() {
+      alert('문의가 성공적으로 접수되었습니다!');
+      document.getElementById('contactForm').reset();
+    }, function(error) {
+      alert('메일 전송에 실패했습니다: ' + JSON.stringify(error));
+    });
+});
 </script>
 </body>
 </html> 
