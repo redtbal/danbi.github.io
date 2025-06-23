@@ -386,38 +386,38 @@
 <body>
 <!-- 반응형 네비게이션 시작 -->
 <nav class="bg-white shadow-lg fixed w-full z-50">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center h-16">
-      <div class="flex-shrink-0">
-        <a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
-          <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
-        </a>
-      </div>
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-4">
-          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
-          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
-          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
-          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
-          <a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
-        </div>
-      </div>
-      <!-- 모바일 햄버거 버튼 -->
-      <div class="md:hidden flex items-center">
-        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- 모바일 메뉴 -->
-  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-white">
-    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="about.html">회사소개</a>
-    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="category.html">제품</a>
-    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="applications.html">적용사례</a>
-    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="resources.html">자료실</a>
-    <a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="contact.html">문의하기</a>
-  </div>
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex-shrink-0">
+<a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
+<span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
+</a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="about.html"><span class="ko">회사소개</span><span class="en">About Us</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="category.html"><span class="ko">제품</span><span class="en">Products</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="applications.html"><span class="ko">적용사례</span><span class="en">Applications</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="resources.html"><span class="ko">자료실</span><span class="en">Resources</span></a>
+<a class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300" href="contact.html"><span class="ko">문의하기</span><span class="en">Contact Us</span></a>
+</div>
+</div>
+<!-- 모바일 햄버거 버튼 -->
+<div class="md:hidden flex items-center">
+<button class="text-gray-700 focus:outline-none" id="mobile-menu-button">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- 모바일 메뉴 -->
+<div class="md:hidden hidden px-4 pb-4 bg-white" id="mobile-menu">
+<a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="about.html">회사소개</a>
+<a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="category.html">제품</a>
+<a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="applications.html">적용사례</a>
+<a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="resources.html">자료실</a>
+<a class="block text-gray-700 hover:text-blue-600 py-2 text-base font-medium" href="contact.html">문의하기</a>
+</div>
 </nav>
 <script>
   const btn = document.getElementById('mobile-menu-button');
@@ -438,6 +438,10 @@
 <!-- 네비게이션 바 끝 -->
 <!-- 히어로 섹션 -->
 <section class="hero-section" style="margin-top: 100px; padding: 60px 20px; border: 2px solid silver; border-radius: 18px;background-color: #0a162f; animation: fadeZoomIn 1.5s ease-out forwards;">
+<div style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.18); border-radius: 2rem; border: 1.5px solid rgba(255,255,255,0.25); box-shadow: 0 4px 32px 0 rgba(0,0,0,0.12); display: inline-block; padding: 0.6em 1.6em; margin-bottom: 28px; font-size: 1.15rem; font-weight: 700; color: #E5E4E2; letter-spacing: 0.02em; text-shadow: 0 2px 8px rgba(0,0,0,0.08); position: relative; z-index: 2;">
+<svg style="width:1.2em;height:1.2em;vertical-align:-0.2em;margin-right:0.5em;fill:#E5E4E2;display:inline;" viewbox="0 0 24 24"><circle cx="12" cy="12" fill="#e0e7ff" r="10"></circle><path d="M7 13l3 3 7-7" fill="none" stroke="#E5E4E2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+  GREMOTOOL, PDX CNC 회사 총판
+</div>
 <h1 class="hero-title">기술에 단비가 내리다</h1>
 <p class="hero-subtitle">메마른 산업 현장에 꼭 필요한 단비처럼,
 주식회사 단비는 정밀함과 신뢰로 응답합니다.</p>
@@ -462,58 +466,10 @@
 <p class="text-lg text-gray-300">다양한 산업 분야에 적용 가능한 고품질 금형 부품과 맞춤형 솔루션을 제공합니다</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="정밀 금형 부품" class="w-full h-56 object-cover" src="images/tooling_column.png"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">Tooling Column</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div>
-<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="자동화 시스템" class="w-full h-56 object-cover" src="images/zero_point.jpg"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">Zero Point Unit</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div>
-<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="맞춤형 부품" class="w-full h-56 object-cover" src="images/circular_clamp.png"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">Round Clamp</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div>
-<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="정밀 금형 부품" class="w-full h-56 object-cover" src="images/4jaw_chuck.png"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">4-Jaw Chuck</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="자동화 시스템" class="w-full h-56 object-cover" src="images/5axis_vise.png"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">3-Axis Vise</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition">
-<img alt="맞춤형 부품" class="w-full h-56 object-cover" src="images/3axis_vise.jpg"/>
-<div class="p-6 text-left">
-<h3 class="text-xl font-semibold mb-2 text-white">5-Axis Vise</h3>
-
-
-<a class="inline-block px-4 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700" href="category.html">자세히 보기</a>
-</div>
-</div></div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="정밀 금형 부품" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/Gremotool.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">GREMOTOOL</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="자동화 시스템" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/zero_point.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">Zero Point Unit</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="맞춤형 부품" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/5-Axis Vise.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">5-Axis Vise</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div>
+<div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="정밀 금형 부품" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/3-Axis vise.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">3-Axis vise</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="자동화 시스템" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/4-JAW CHUCK.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0"> 4-JAW CHUCK</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="맞춤형 부품" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/Round Clamp.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">Round Clamp</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="GREMOTOOL" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/Tooling Column.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">Tooling Column</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="Oil Skimmer" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/Oil Skimmer.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">Oil Skimmer</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div><div class="bg-white bg-opacity-5 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-lg transition hover:scale-105 transform transition duration-500 shadow-xl border border-blue-500/10"><div class="w-full h-72"><img alt="TOOL TAG" class="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-105" src="images/TOOL TAG.png"/></div><div class="flex justify-between items-center bg-blue-900 px-4 py-3"><p class="text-lg font-bold text-white m-0">TOOL TAG</p><a class="text-sm font-semibold text-white underline" href="category.html">자세히 보기</a></div></div></div>
 </div>
 </section>
 <!-- 주요 제품 섹션 -->
