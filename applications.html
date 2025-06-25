@@ -250,8 +250,16 @@
 <script>
 // 실제 이미지/영상 파일 예시 배열
 const galleryItems = [
-  ...Array.from({length: 30}, (_, i) => ({ type: 'photo', src: `images/photo${i+1}.jpg` })),
-  { type: 'video', src: 'video/sample1.mp4' }
+  ...Array.from({length: 31}, (_, i) => ({ type: 'photo', src: `images/photo${i+1}.jpg` })),
+  { type: 'video', src: 'video/sample1.mp4' },
+  { type: 'video', src: 'video/01_PAT_Vorstellung수정.mp4' },
+  { type: 'video', src: 'video/02_PAT_einfache_Anwendung수정.mp4' },
+  { type: 'video', src: 'video/03_RC-38_Rundspannung수정.mp4' },
+  { type: 'video', src: 'video/08_RoboCabinet_PMC_TCF_low수정.mp4' },
+  { type: 'video', src: 'video/09_TransformerWorkMaster수정.mp4' },
+  { type: 'video', src: 'video/GRE_01_TCF_Teaser수정.mp4' },
+  { type: 'video', src: 'video/S3R_02_Teaser_LRC_en수정.mp4' },
+  { type: 'video', src: 'video/S3R_04_LC_NPS_en수정.mp4' }
 ];
 
 const ITEMS_PER_PAGE = 12;
