@@ -117,6 +117,32 @@
         90% { opacity: 1;}
         100% { transform: translateY(-100px) rotate(360deg); opacity: 0;}
     }
+    /* 필터 버튼 3D/입체 효과 */
+    .filter-3d {
+      background: linear-gradient(145deg, #e0e7ef 0%, #cfd8e3 100%);
+      box-shadow: 0 4px 12px 0 rgba(30,60,114,0.10), 0 1.5px 4px 0 rgba(30,60,114,0.10);
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: transform 0.15s cubic-bezier(.17,.67,.83,.67), box-shadow 0.2s;
+      position: relative;
+      outline: none;
+    }
+    .filter-3d:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 2px 6px 0 rgba(30,60,114,0.10);
+    }
+    .filter-btn.active.filter-3d {
+      background: linear-gradient(145deg, #2563eb 0%, #1e3c72 100%);
+      color: #fff;
+      box-shadow: 0 6px 18px 0 rgba(37,99,235,0.18), 0 2px 8px 0 rgba(30,60,114,0.10);
+    }
+    .filter-3d:hover:not(.active) {
+      background: linear-gradient(145deg, #f1f5fa 0%, #dbeafe 100%);
+      color: #2563eb;
+      box-shadow: 0 8px 24px 0 rgba(37,99,235,0.10), 0 2px 8px 0 rgba(30,60,114,0.10);
+      transform: translateY(-2px) scale(1.04);
+    }
 </style>
 </head>
 <body>
@@ -126,6 +152,7 @@
     <div class="flex justify-between items-center h-16">
       <div class="flex-shrink-0">
         <a class="text-2xl font-bold text-blue-600 transition duration-300 hover:text-blue-700" href="index.html">
+          <img src="images/DANBI-LOGO.png" alt="단비 로고" style="display:inline; height:36px; vertical-align:middle; margin-right:8px;">
           <span class="ko">주식회사 단비</span><span class="en">DANBI CORP</span>
         </a>
       </div>
@@ -169,6 +196,10 @@
   .en { display: none; }
   a:hover .ko { display: none; }
   a:hover .en { display: inline; }
+  /* 필터 버튼 호버 시 영문 표시 */
+  .filter-btn .en { display: none; }
+  .filter-btn:hover .ko { display: none; }
+  .filter-btn:hover .en { display: inline; }
 </style>
 
 <!-- 히어로 섹션 -->
@@ -181,9 +212,9 @@
 <!-- 필터 섹션 -->
 <div class="max-w-7xl mx-auto px-4 py-8">
   <div class="flex flex-wrap justify-center gap-4 mb-8">
-    <button class="filter-btn active px-4 py-2 rounded-full bg-gray-200 text-gray-700" data-filter="all">전체</button>
-    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700" data-filter="photo">사진</button>
-    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700" data-filter="video">동영상</button>
+    <button class="filter-btn active px-4 py-2 rounded-full bg-gray-200 text-gray-700 shadow-lg filter-3d" data-filter="all"><span class="ko">전체</span><span class="en">All</span></button>
+    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 shadow-lg filter-3d" data-filter="photo"><span class="ko">사진</span><span class="en">Photo</span></button>
+    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 shadow-lg filter-3d" data-filter="video"><span class="ko">동영상</span><span class="en">Video</span></button>
   </div>
   <!-- 갤러리 그리드 및 페이지네이션 -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-grid"></div>
@@ -201,7 +232,7 @@
         <source src="" type="video/mp4">
         동영상을 지원하지 않는 브라우저입니다.
       </video>
-      <div class="mt-2 text-center text-white"> </div>
+      <div class="mt-2 text-center text-white"></div>
     </div>
   </template>
 </div>
@@ -211,7 +242,7 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div>
 <h3 class="text-xl font-bold mb-4">주식회사 단비</h3>
-<p class="text-gray-400">정밀 금형 부품 전문기업</p>
+<p class="text-gray-400">정밀 클램프 전문기업</p>
 </div>
 <div>
 <h4 class="text-lg font-semibold mb-4">바로가기</h4>
@@ -250,8 +281,7 @@
 <script>
 // 실제 이미지/영상 파일 예시 배열
 const galleryItems = [
-  ...Array.from({length: 31}, (_, i) => ({ type: 'photo', src: `images/photo${i+1}.jpg` })),
-
+  ...Array.from({length: 53}, (_, i) => ({ type: 'photo', src: `images/photo${i+1}.jpg` })),
   { type: 'video', src: 'video/01_PAT_Vorstellung수정.mp4' },
   { type: 'video', src: 'video/02_PAT_einfache_Anwendung수정.mp4' },
   { type: 'video', src: 'video/03_RC-38_Rundspannung수정.mp4' },
@@ -259,7 +289,12 @@ const galleryItems = [
   { type: 'video', src: 'video/09_TransformerWorkMaster수정.mp4' },
   { type: 'video', src: 'video/GRE_01_TCF_Teaser수정.mp4' },
   { type: 'video', src: 'video/S3R_02_Teaser_LRC_en수정.mp4' },
-  { type: 'video', src: 'video/S3R_04_LC_NPS_en수정.mp4' }
+  { type: 'video', src: 'video/S3R_04_LC_NPS_en수정.mp4' },
+  { type: 'video', src: 'video/2024_08_22 16_24.mp4' },
+  { type: 'video', src: 'video/20201118_110102.mp4' },
+  { type: 'video', src: 'video/ECT_MO.mp4' },
+  { type: 'video', src: 'video/INO-M-11.mp4' }
+
 ];
 
 const ITEMS_PER_PAGE = 12;
