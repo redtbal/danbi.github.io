@@ -1,25 +1,25 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://danbi.github.io/</loc>
+    <loc>https://danbicorp.shop/</loc>
     <lastmod>2025-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://danbi.github.io/product.html</loc>
+    <loc>https://danbicorp.shop/product.html</loc>
     <lastmod>2025-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://danbi.github.io/about.html</loc>
+    <loc>https://danbicorp.shop/about.html</loc>
     <lastmod>2025-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://danbi.github.io/contact.html</loc>
+    <loc>https://danbicorp.shop/contact.html</loc>
     <lastmod>2025-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
