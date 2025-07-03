@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danbi.github.io/sitemap.xml
+Sitemap: https://danbicorp.shop/sitemap.xml
